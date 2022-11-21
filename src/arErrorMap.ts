@@ -2,8 +2,6 @@ import { ZodErrorMap, ZodIssueCode, ZodParsedType } from 'zod';
 import { util } from './util';
 
 export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
-    console.log('issue.code', (issue as any).code )
-
     let message: string;
     switch (issue.code) {
         case ZodIssueCode.invalid_type:
@@ -88,8 +86,8 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
                 } ${issue.maximum} عناصر`;
             else if (issue.type === 'string')
                 message = `النص يجب أن يحتوي على  ${
-                    issue.inclusive ? `على الأكثر` : `أقل `
-                } ${issue.maximum} حروف`;
+                    issue.inclusive ? ` الأكثر` : `أقل `
+                } ${issue.maximum} حرف`;
             else if (issue.type === 'number')
                 message = `الرقم يجب ان يكون أقل من  ${
                     issue.inclusive ? `أو يساوي ` : ``

@@ -1,6 +1,6 @@
 {
   "name": "@mhmdaljefri/zod-ar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Arabic message for zod validations",
   "keywords": ["zod", "arabic","arabic-translations", "translations"],
   "repository": "https://github.com/mhmdAljefri/zod-ar",
