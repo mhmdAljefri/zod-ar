@@ -1,8 +1,13 @@
 {
   "name": "@mhmdaljefri/zod-ar",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Arabic message for zod validations",
-  "keywords": ["zod", "arabic","arabic-translations", "translations"],
+  "keywords": [
+    "zod",
+    "arabic",
+    "arabic-translations",
+    "translations"
+  ],
   "repository": "https://github.com/mhmdAljefri/zod-ar",
   "author": "mhmdaljefri",
   "license": "MIT",
@@ -10,6 +15,7 @@
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "yarn build",
+    "publish": "npm publish --access public",
     "build": "tsc -p tsconfig.json",
     "start": "tsc -p tsconfig.json --watch"
   },

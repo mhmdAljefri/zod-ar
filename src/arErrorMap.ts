@@ -68,7 +68,7 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
             else if (issue.type === 'string')
                 message = `النص يجب أن يحتوي على  ${
                     issue.inclusive ? `الأقل` : `اكثر`
-                } ${issue.minimum} حروف`;
+                } ${issue.minimum} حرف`;
             else if (issue.type === 'number')
                 message = `الرقم يجب أن يكون أكثر من  ${
                     issue.inclusive ? `أو يساوي ` : ``
