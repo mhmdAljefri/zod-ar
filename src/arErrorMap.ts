@@ -12,7 +12,7 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
             }
             break;
         case ZodIssueCode.invalid_literal:
-            message = `قيمة حرفية غير صالحة, المتوقع ${JSON.stringify(
+            message = `قيمة حرفية غير صحيحة, المتوقع ${JSON.stringify(
                 issue.expected,
                 util.jsonStringifyReplacer,
             )}`;
@@ -24,40 +24,40 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
             )}`;
             break;
         case ZodIssueCode.invalid_union:
-            message = `مدخل غير صالح`;
+            message = `مدخل غير صحيح`;
             break;
         case ZodIssueCode.invalid_union_discriminator:
-            message = `قيمة غير صالحة. المتوقع ${util.joinValues(
+            message = `قيمة غير صحيحة. المتوقع ${util.joinValues(
                 issue.options,
             )}`;
             break;
         case ZodIssueCode.invalid_enum_value:
-            message = `قيمة غير صالحة. المتوقع ${util.joinValues(
+            message = `قيمة غير صحيحة. المتوقع ${util.joinValues(
                 issue.options,
             )}, المتلقى '${issue.received}'`;
             break;
         case ZodIssueCode.invalid_arguments:
-            message = `قيمة غير صالحة`;
+            message = `قيمة غير صحيحة`;
             break;
         case ZodIssueCode.invalid_return_type:
-            message = `قيمة غير صالحة`;
+            message = `قيمة غير صحيحة`;
             break;
         case ZodIssueCode.invalid_date:
-            message = `قيمة غير صالحة`;
+            message = `قيمة غير صحيحة`;
             break;
         case ZodIssueCode.invalid_string:
             if (typeof issue.validation === 'object') {
                 if ('startsWith' in issue.validation) {
-                    message = `قيمة غير صالحة: يجب أن يبدأ بـ  "${issue.validation.startsWith}"`;
+                    message = `قيمة غير صحيحة: يجب أن يبدأ بـ  "${issue.validation.startsWith}"`;
                 } else if ('endsWith' in issue.validation) {
-                    message = `قيمة غير صالحة: يجب ان ينتهي بـ "${issue.validation.endsWith}"`;
+                    message = `قيمة غير صحيحة: يجب ان ينتهي بـ "${issue.validation.endsWith}"`;
                 } else {
                     util.assertNever(issue.validation);
                 }
             } else if (issue.validation !== 'regex') {
-                message = `غير صالح ${issue.validation}`;
+                message = `غير صحيح ${issue.validation}`;
             } else {
-                message = 'غير صالح';
+                message = 'غير صحيح';
             }
             break;
         case ZodIssueCode.too_small:
@@ -77,7 +77,7 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
                 message = `التاريخ يجب ان يكون أكبر من  ${
                     issue.inclusive ? `أو يساوي ` : ``
                 }${new Date(issue.minimum)}`;
-            else message = 'قيمة غير صالحة';
+            else message = 'قيمة غير صحيحة';
             break;
         case ZodIssueCode.too_big:
             if (issue.type === 'array')
@@ -96,10 +96,10 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
                 message = `التاريخ يجب ان يكون أصغر من  ${
                     issue.inclusive ? `أو يساوي ` : ``
                 }${new Date(issue.maximum)}`;
-            else message = 'قيمة غير صالحة';
+            else message = 'قيمة غير صحيحة';
             break;
         case ZodIssueCode.custom:
-            message = `مدخل غير صالح`;
+            message = `مدخل غير صحيح`;
             break;
         case ZodIssueCode.invalid_intersection_types:
             message = `تعذر دمج نتائج التقاطع`;
