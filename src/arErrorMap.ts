@@ -47,7 +47,13 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
             break;
         case ZodIssueCode.invalid_string:
             if (typeof issue.validation === 'object') {
-                if ('startsWith' in issue.validation) {
+                if ("includes" in issue.validation) {
+                  message = `Invalid input: must include "${issue.validation.includes}"`;
+
+                  if (typeof issue.validation.position === "number") {
+                    message = `${message} at one or more positions greater than or equal to ${issue.validation.position}`;
+                  }
+                } else  if ('startsWith' in issue.validation) {
                     message = `قيمة غير صحيحة: يجب أن يبدأ بـ  "${issue.validation.startsWith}"`;
                 } else if ('endsWith' in issue.validation) {
                     message = `قيمة غير صحيحة: يجب ان ينتهي بـ "${issue.validation.endsWith}"`;
@@ -76,7 +82,7 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
             else if (issue.type === 'date')
                 message = `التاريخ يجب ان يكون أكبر من  ${
                     issue.inclusive ? `أو يساوي ` : ``
-                }${new Date(issue.minimum)}`;
+                }${new Date(Number(issue.minimum))}`;
             else message = 'قيمة غير صحيحة';
             break;
         case ZodIssueCode.too_big:
@@ -95,7 +101,7 @@ export const arErrorMap: ZodErrorMap = (issue, _ctx) => {
             else if (issue.type === 'date')
                 message = `التاريخ يجب ان يكون أصغر من  ${
                     issue.inclusive ? `أو يساوي ` : ``
-                }${new Date(issue.maximum)}`;
+                }${new Date(Number(issue.maximum))}`;
             else message = 'قيمة غير صحيحة';
             break;
         case ZodIssueCode.custom:
